@@ -19,4 +19,17 @@ public class CalculatorDecoratorTest {
         assertThat(result).isEqualTo("1 + 3 = 4");
     }
 
+    @Test
+    public void should_decorate_sum_with_negatives() {
+
+        // given
+        CalculatorDecorator calculatorDecorator = new CalculatorDecorator();
+
+        // when
+        final String result = calculatorDecorator.add(1, -1);
+
+        // then
+        assertThat(result).isEqualTo("1 + -1 = 0");
+    }
+
 }
