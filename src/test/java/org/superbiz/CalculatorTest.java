@@ -46,4 +46,18 @@ public class CalculatorTest {
         // then
         assertThat(result).isEqualTo(-2);
     }
+
+    @Test
+    public void should_multiply_two_negatives_values_and_be_positive_result() {
+
+        // given
+        Calculator calculator = new Calculator();
+
+        // when
+        final int result = calculator.multiply(-1, -3);
+
+        // then
+        assertThat(result).isEqualTo(3);
+
+    }
 }
