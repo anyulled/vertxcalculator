@@ -23,4 +23,20 @@ public class MatrixCalculatorTest {
         assertThat(sum).isEqualTo(expectedSum);
     }
 
+    @Test
+    public void should_sum_two_matrix_with_zeros() {
+
+        // given
+        final Matrix a = Matrix.from2DArray(new double[][]{{0d, 0d}, {0d, 0d}});
+        final Matrix b = Matrix.from2DArray(new double[][]{{0d, 0d}, {0d, 0d}});
+        MatrixCalculator matrixCalculator = new MatrixCalculator();
+
+        // when
+        final Matrix sum = matrixCalculator.sum(a, b);
+
+        // then
+        final Matrix expectedSum = Matrix.from2DArray(new double[][]{{0d, 0d}, {0d, 0d}});
+        assertThat(sum).isEqualTo(expectedSum);
+    }
+
 }
