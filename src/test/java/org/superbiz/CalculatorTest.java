@@ -30,7 +30,7 @@ public class CalculatorTest {
         final int result = calculator.multiply(1, 3);
 
         // then
-        assertThat(result).isEqualTo(0);
+        assertThat(result).isEqualTo(3);
 
     }
 
