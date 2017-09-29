@@ -18,7 +18,7 @@ import static org.hamcrest.CoreMatchers.is;
 public class CalculatorVerticleTest {
 
     @Rule
-    public RunTestOnContext rule = new RunTestOnContext();
+    public final RunTestOnContext rule = new RunTestOnContext();
 
     @Test
     public void should_add_two_numbers(TestContext context) {

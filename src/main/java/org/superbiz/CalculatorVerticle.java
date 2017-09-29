@@ -8,9 +8,9 @@ import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
 
-public class CalculatorVerticle extends AbstractVerticle {
+class CalculatorVerticle extends AbstractVerticle {
 
-    private CalculatorDecorator calculatorDecorator = new CalculatorDecorator();
+    private final CalculatorDecorator calculatorDecorator = new CalculatorDecorator();
 
     public static void main(String[] args) {
         Vertx vertx = Vertx.vertx();
@@ -24,10 +24,23 @@ public class CalculatorVerticle extends AbstractVerticle {
         router.route().handler(BodyHandler.create());
 
         router.get("/sum/:a/:b").handler(this::sum);
+        router.get("/multiply/:a/:b").handler(this::multiply);
         router.get("/health").handler(this::health);
 
         vertx.createHttpServer().requestHandler(router::accept).listen(8080);
 
+    }
+
+    private void multiply(RoutingContext routingContext) {
+        final HttpServerRequest request = routingContext.request();
+        final HttpServerResponse response = routingContext.response();
+
+        int a = Integer.parseInt(request.getParam("a"));
+        int b = Integer.parseInt(request.getParam("b"));
+
+        String result = calculatorDecorator.multiply(a, b);
+
+        response.putHeader("content-type", "text/plain").end(result);
     }
 
     private void sum(RoutingContext routingContext) {

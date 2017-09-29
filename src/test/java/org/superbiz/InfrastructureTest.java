@@ -17,7 +17,7 @@ import static io.restassured.RestAssured.get;
 public class InfrastructureTest {
 
     @Rule
-    public RunTestOnContext rule = new RunTestOnContext();
+    public final RunTestOnContext rule = new RunTestOnContext();
 
     @Test
     public void should_add_two_numbers(TestContext context) {
